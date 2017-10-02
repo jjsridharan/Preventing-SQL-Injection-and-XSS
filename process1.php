@@ -7,17 +7,17 @@ $prefix = "";
 $bd = @mysqli_connect($mysql_hostname, $mysql_user,$mysql_password) or die("Could not connect database");
 mysqli_select_db($bd,$mysql_database) or die("<h1>Could not select database<h1>");
       $use=$_POST['username'];
-	  $qry="select * from User where Name='$use'";
-	  echo $qry."<br /><br /><br />";
-      $r=mysqli_query($bd,$qry);
-	  $res="";
-      while($row=mysqli_fetch_assoc($r))
+	  $mysqli = new mysqli($mysql_hostname, $mysql_user, $mysql_password, $mysql_database);
+	  $qry="Select * from User where Name=?";
+	  $stmt=$mysqli->prepare($qry);
+        $stmt->bind_param("s", $use);
+		$stmt->execute();
+		$stmt->bind_result($col1,$col2,$col3);
+		while($stmt->fetch())
 		{
-		$res.=$row['Name']."\t";
-		$res.=$row['Address']."\t";
-		$res.=$row['Phone']."<br /><br /><br />";
+			echo $col1."\n".$col2."\n".$col3;
 		}
-	echo $res;
-     
+
+
 ?>						
 	
