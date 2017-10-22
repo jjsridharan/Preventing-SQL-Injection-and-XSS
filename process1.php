@@ -11,19 +11,24 @@ mysqli_select_db($bd,$mysql_database) or die("<h1>Could not select database<h1>"
 	  $daterec=$_POST['date'];
 	  $datenow=gmdate('Y-m-d H:i:s');
 	  $to_time = strtotime($daterec);
-$from_time = strtotime($datenow);
+	$from_time = strtotime($datenow);
 	if($from_time - $to_time>120 || $to_time>$from_time || md5($use)!=$checksum)
-		header('Location:Fetch1.php');
+		echo "Invalid request";
 	  $mysqli = new mysqli($mysql_hostname, $mysql_user, $mysql_password, $mysql_database);
 	  $qry="Select * from User where Name=?";
 	  $stmt=$mysqli->prepare($qry);
         $stmt->bind_param("s", $use);
 		$stmt->execute();
 		$stmt->bind_result($col1,$col2,$col3);
+		$f=1;
+		echo "Name\tAddress\tPhone\t<br/><br/>";
 		while($stmt->fetch())
 		{
+			$f=0;
 			echo $col1."\n".$col2."\n".$col3;
 		}
+		if($f) 
+			echo "No such User";
 
 
 ?>						

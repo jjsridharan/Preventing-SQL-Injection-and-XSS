@@ -11,11 +11,12 @@ mysqli_select_db($bd,$mysql_database) or die("<h1>Could not select database<h1>"
 	  echo $qry."<br /><br /><br />";
       $r=mysqli_query($bd,$qry);
 	  $res="";
+	  echo "Name\tAddress\tPhone\t<br/><br/>";
       while($row=mysqli_fetch_assoc($r))
 		{
-		$res.=$row['Name']."\t";
-		$res.=$row['Address']."\t";
-		$res.=$row['Phone']."<br /><br /><br />";
+			$res.=$row['Name']."\t";
+			$res.=$row['Address']."\t";
+			$res.=$row['Phone']."<br /><br /><br />";
 		}
 	echo $res;
      

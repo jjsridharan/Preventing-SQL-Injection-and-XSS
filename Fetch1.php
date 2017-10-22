@@ -1,6 +1,7 @@
 <html>
 	<head>	
 		<title>Sample Check</title>
+		<center>SQL INJECTION DEMO</center>
 		<script>
 				function md5cycle(x, k) {
 var a = x[0], b = x[1], c = x[2], d = x[3];
@@ -200,12 +201,13 @@ return (msw << 16) | (lsw & 0xFFFF);
 				}
 		</script>
 	</head>
-	<body>
-			<form action="process1.php" method="post" onsubmit="return validateForm()">
-					<input type="text" id="user" name="username" placeholder="Username" />
+	<body style="background-size:cover;background-color: lightblue;">
+			<p>SQL injection is a code injection technique, used to attack data-driven applications, in which nefarious SQL statements are inserted into an entry field for execution (e.g. to dump the database contents to the attacker).[1] SQL injection must exploit a security vulnerability in an application's software, for example, when user input is either incorrectly filtered for string literal escape characters embedded in SQL statements or user input is not strongly typed and unexpectedly executed. SQL injection is mostly known as an attack vector for websites but can be used to attack any type of SQL database.</p>
+			<form action="process1.php" method="post" onsubmit="return validateForm()" style="text-align:center;margin-top: 200px;">
+					<input type="text" id="user" style="border: 2px solid red;border-radius: 4px;height:30px;" name="username" placeholder="Username" /><br/><br/><br/>			
 					<input type="text" id="date" name="date" hidden/>
 					<input type="text" id="hash" name="check" hidden/>
-					<input type="submit" value="Fetch" />
+					<input type="submit" style="background-color: white;color: black;border: 2px solid #4CAF50;" value="Fetch" />
 			</form>
 	</body>
 </html>
